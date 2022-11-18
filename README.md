@@ -1,5 +1,8 @@
 # pokegan
-
+## Description
+The Tensorflow 2 Based pokemon generator using GAN.
+## How to run
+To do
 ## Credits
 [gan tricks](https://github.com/soumith/ganhacks)
 
