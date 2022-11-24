@@ -1,7 +1,9 @@
 # pokegan
 ## Description
 This is a Tensorflow 2 based pokemon generator using normal GAN.
+
 Here are some generated pokemons which are similar to Arceus.
+
 ![c534000-3](https://user-images.githubusercontent.com/50898990/203698630-5ae8830f-bfa7-4ae7-8932-e71992253199.png)
 ![c562200-1](https://user-images.githubusercontent.com/50898990/203698635-0e44cf17-e257-4857-be32-8d50dc215578.png)
 ![c563400-1](https://user-images.githubusercontent.com/50898990/203698640-4fbb0f89-2b44-4639-b9b7-b08b93940092.png)
