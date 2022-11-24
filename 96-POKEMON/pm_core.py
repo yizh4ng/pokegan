@@ -82,7 +82,7 @@ def activate():
   # Build model
   generator = th.generator()
   discriminator = th.discriminator()
-  mark ='lr{}-bs{}-ag{}'.format(th.learning_rate, th.batch_size,
+  mark ='lr{}-bs{}-ag{}-wgan-gp'.format(th.learning_rate, th.batch_size,
                                           th.augmentation)
   agent = Agent(mark, th.task_name)
   agent.config_dir(__file__)

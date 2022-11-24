@@ -16,10 +16,14 @@ class POKEMON(ImageDataAgent):
   def load(cls, th):
     assert isinstance(th, TrainerHub)
     data_set = cls.load_as_tframe_data(th.data_dir)
+
     data_set.features = data_set.features[..., ::-1]
     data_set.features  = data_set.features / 128.0
     data_set.features = data_set.features - 1
     data_set.features = np.clip(data_set.features, -1, 1)
+    select_index = np.argwhere((data_set.features[:, 0, 0, 0] == -1))
+    select_index = np.sum(select_index, -1)
+    data_set = data_set[select_index]
     # train_set, val_set, test_set = data_set.split([th.val_size, th.test_size], random=True)
     return data_set
 
@@ -67,9 +71,16 @@ if __name__ == '__main__':
   set_random_seed(1)
   th.data_dir = 'G:\projects\data\pokemon'
   data_set= POKEMON.load(th)
-  # data_set.append_batch_preprocessor(color_jitter)
-  data_set_gen = data_set.gen_batches(16)
+  # # data_set.append_batch_preprocessor(color_jitter)
+  # data_set_gen = data_set.gen_batches(16)
+  # da = DaVinci()
+  # da.objects = (next(data_set_gen).features + 1) / 2
+  # da.add_plotter(da.imshow_pro)
+  # da.show()
+  select_index = np.argwhere((data_set.features[:,0,0,0] == -1))
+  select_index = np.sum(select_index, -1)
+  print(select_index)
   da = DaVinci()
-  da.objects = (next(data_set_gen).features + 1) / 2
+  da.objects = (data_set.features[select_index] + 1)/2
   da.add_plotter(da.imshow_pro)
   da.show()
